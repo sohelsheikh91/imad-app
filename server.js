@@ -34,7 +34,8 @@ var articles ={
                         this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
                     </p>`
     },
-    'article-three' :{title :'Article Three | Sohel Sheikh',
+    'article-three' :{
+        title :'Article Three | Sohel Sheikh',
     heading :'Article Three',
     date :'Sep 5,2016',
     content:`    <p>
