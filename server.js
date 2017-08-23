@@ -4,7 +4,9 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleone ={
+
+var articles ={
+     articleone : { 
     title :'Article One | Sohel Sheikh',
     heading :'Article One',
     date :'Sep 5,2016',
@@ -17,7 +19,36 @@ var articleone ={
                     <p>
                         this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
                     </p>`
+     },
+     articletwo : {
+        title :'Article Two | Sohel Sheikh',
+    heading :'Article Two',
+    date :'Sep 5,2016',
+    content:`    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>
+                    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>
+                    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>`
+    },
+    articlethree :{title :'Article Three | Sohel Sheikh',
+    heading :'Article Three',
+    date :'Sep 5,2016',
+    content:`    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>
+                    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>
+                    <p>
+                        this the content for my new article. this the content for my new article this the content for my new article this the content for my new article.
+                    </p>`}
+    
 };
+
 function createTemplate (data){
     var title =data.title;
     var date= data.date;
@@ -61,15 +92,11 @@ return htmlTemplate;
 app.get('/', function (req, res) {
 res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function (req, res){
-res.send(createTemplate(articleone));
+app.get('/:articleName', function (req, res){
+    var articleName = req.params.articlename;
+res.send(createTemplate(articles[articlename]));
 });
-app.get('/article-two', function (req, res){
-res.sendFile(path.join(__dirname, 'ui', 'article two.html'));
-});
-app.get('/article-three', function (req, res){
-res.sendFile(path.join(__dirname, 'ui', 'article three.html'));
-});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
